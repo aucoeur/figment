@@ -1,0 +1,23 @@
+{
+  "name": "@okayauco/figment",
+  "version": "0.1.0",
+  "description": "figment is a simple datetime lib",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aucoeur/figment.git"
+  },
+  "author": "Aucoeur Ngo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aucoeur/figment/issues"
+  },
+  "homepage": "https://github.com/aucoeur/figment#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
