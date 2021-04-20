@@ -23,21 +23,54 @@ export default class Fig {
 
   get dayOfWeek() {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', ]
-    return days[this._date.getUTCDay()]
+    return days[this._date.getDay()]
   }
 
   get hour() {
-    return this._date.getUTCHours()
+    return this._date.getHours()
   }
 
   get minutes() {
-    return this._date.getUTCMinutes()
+    return this._date.getMinutes()
   }
 
   get seconds() {
-    return this._date.getUTCSeconds()
+    return this._date.getSeconds()
+  }
+
+  format(pattern) {
+    // Split by anything that is not a digit
+    const sequence = pattern.split(/[^ymdwhs]/gi)
+
+    // matches everything in sequence, returns array of separators
+    // const separators
+
+    let formatted = []
+
+    sequence.map(s => {
+      switch (true) {
+        case s.toLowerCase().includes('y'):
+          formatted.push(this.year.toString().slice(-s.length))
+          break;
+        case s.includes('m'):
+          formatted.push(this.month.slice(0, 3))
+          break;
+        case s.includes('M'):
+          formatted.push(this.month)
+          break;
+        case s.toLowerCase().includes('d'):
+          formatted.push(this.day)
+          break;
+        default:
+          return this._date.toDateString()
+      }
+    })
+
+    // TODO: join with included separators
+    return formatted
   }
 }
 
-// const fig = new Fig('1988-07-10T16:32:56.123Z')
+const fig = new Fig('1988-07-10T16:32:56.123Z')
 // console.log(fig.month)
+console.log(fig.format('YYYY MM mm DD'))

@@ -1,7 +1,7 @@
 import {jest} from '@jest/globals';
 import Fig from './index';
 
-const fig = new Fig('1988-07-10T16:32:56.123Z')
+const fig = new Fig('1988-07-10T21:32:56.123Z')
 
 describe(`figs aren't dates but time isn't real`, () => {
   test('Sanity Check', () => {
@@ -23,7 +23,7 @@ describe(`Getters`, () => {
     expect(fig.dayOfWeek).toBe('Sunday')
   })
   test('hour', () => {
-    expect(fig.hour).toBe(16)
+    expect(fig.hour).toBe(14)
   })
   test('minutes', () => {
     expect(fig.minutes).toBe(32)
