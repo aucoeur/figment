@@ -39,3 +39,7 @@ figs aren't dates but time isn't real
   - [ ] size
   - [ ] GitHub Issues
 - [ ] Stretch: `.toPrimitive()` to return String or Num depending on context
+
+## References
+- Date Format By Country Wiki [https://en.wikipedia.org/wiki/Date_format_by_country](https://en.wikipedia.org/wiki/Date_format_by_country)
+- Luxon [https://moment.github.io/luxon/](https://moment.github.io/luxon/)

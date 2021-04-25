@@ -2,7 +2,7 @@
   "name": "@okayauco/figment",
   "version": "0.1.0",
   "description": "figment is a simple datetime lib",
-  "main": "src/index.js",
+  "main": "src/figment.js",
   "type": "module",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"

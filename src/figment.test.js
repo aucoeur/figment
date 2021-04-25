@@ -1,5 +1,5 @@
 import {jest} from '@jest/globals';
-import Fig from './index';
+import Fig from './figment';
 
 const fig = new Fig('1988-07-10T21:32:56.123Z')
 
