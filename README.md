@@ -17,16 +17,16 @@ figs aren't dates but time isn't real
     - [x] 'y' -> 19 (Year short)
     - [x] 'M' -> July (Month full)
     - [x] 'm' -> Jul (Month short)
-    - [ ] 'D' -> 01 (date padded)
-    - [ ] 'd' -> 1 (date)
-    - [ ] 'H' -> 05 (Hours padded)
-    - [ ] 'h' -> 5 (Hours)
-    - [ ] 'I' -> 08 (Minutes padded)
-    - [ ] 'i' -> 8 (Minutes)
-    - [ ] 'S' -> 04 (Seconds padded)
-    - [ ] 's' -> 4 (Seconds)
-    - [ ] Stretch: Add Day of Week
-    - [ ] Stretch: Add short Day of Week
+    - [x] 'D' -> 01 (date padded)
+    - [x] 'd' -> 1 (date)
+    - [x] 'H' -> 05 (Hours padded)
+    - [x] 'h' -> 5 (Hours)
+    - [x] 'I' -> 08 (Minutes padded)
+    - [x] 'i' -> 8 (Minutes)
+    - [x] 'S' -> 04 (Seconds padded)
+    - [x] 's' -> 4 (Seconds)
+    - [x] Stretch: Add Day of Week
+    - [x] Stretch: Add short Day of Week
 - [ ] Challenge 4: `when()` method
   - [ ] Stretch: `when()` edge cases
   - [ ] Stretch: make work for hours, min, seconds

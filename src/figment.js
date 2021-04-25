@@ -1,4 +1,4 @@
-import { months, days, formatYear, formatMonth, formatDay, formatDateName } from './formatHelpers.js'
+import { months, days, formatYear, formatPadded, formatMonth, formatDay, formatDateName } from './formatHelpers.js'
 
 export default class Fig {
   constructor(...args) {
@@ -33,21 +33,26 @@ export default class Fig {
     return this._date.getSeconds()
   }
 
+  // [TODO]: Add 12/24 hour
   format(pattern) {
+    // return default string
+    if (!pattern) {
+      return this._date.toDateString()
+    }
+
     // Split by anything that is not a digit
-    const sequence = pattern.split(/\b[^ymdwhs]\b/gi)
+    const sequence = pattern.split(/\b[^ymdwhisap]+\b/gi)
 
     // matches everything in sequence, returns array of separators
-    const separators = pattern.split(/[ymdwhs]+/gi)
-    console.log({separators})
+    const separators = pattern.split(/[ymdwhisap]+/gi)
+    // console.log({sequence, separators})
 
     let formatted = []
 
     sequence.map((s,i) => {
+      // peek at first char to determine Y, M, D or H, I(min), S
       let dateSlice = s.toLowerCase().charAt(0)
-      // console.log(dateSlice, i, separators[i+1])
       let len = s.length
-
       let next
 
       switch (dateSlice) {
@@ -56,25 +61,39 @@ export default class Fig {
           formatted.push(next, separators[i+1])
           break;
         case 'd':
-          next = len <= 2 ? formatDay(this.day) : formatDateName(this.dayOfWeek, len)
+          next = len <= 2 ? formatPadded(this.day) : formatDateName(this.dayOfWeek, len)
           formatted.push(next, separators[i+1])
           break;
         case 'm':
-          next = len <= 2 ? formatMonth(this._date.getMonth()+1) : formatDateName(this.month, len)
+          // console.log(this.month)
+          next = len <= 2 ? formatPadded(this._date.getMonth()+1) : formatDateName(this.month, len)
+          formatted.push(next, separators[i+1])
+          break;
+        case 'h':
+          next = formatPadded(this.hour, len)
+          formatted.push(next, separators[i+1])
+          break;
+        case 'i':
+          next = formatPadded(this.minutes, len)
+          formatted.push(next, separators[i+1])
+          break;
+        case 's':
+          next = formatPadded(this.seconds, len)
           formatted.push(next, separators[i+1])
           break;
         default:
-          console.log('boop')
-          // next = this._date.toDateString()
-          // formatted.push(next, separators[i])
-          // formatted.push(next)
+          console.log('unrecognized')
+          break;
       }
     })
-
     return formatted.join('')
   }
 }
 
-const fig = new Fig('1988-07-10T16:32:56.123Z')
+const fig = new Fig('1988-07-03T13:32:56.123Z')
+console.log(fig)
 console.log(fig.month)
-console.log(fig.format('YYYY-MM-DD'))
+console.log(fig.hour)
+console.log(fig.format())
+console.log(fig.format('YYYY MMMM DD HH:II'))
+console.log(fig.format('DDDD MMMM DD, YYYY HH:II'))

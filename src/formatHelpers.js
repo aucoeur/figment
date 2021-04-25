@@ -42,11 +42,17 @@ export function formatMonth(m) {
   return month.length === 1 ? month = `0${month}` : month
 }
 
+export function formatPadded(v, len) {
+  let val = v.toString()
+
+  return len === 2 && v < 10 ? `0${val}` : `${val}`
+}
+
 export function formatDateName(name, len) {
   switch (len) {
     case 2:
     case 3:
-      return name.substr(0, type)
+      return name.toString().substr(0, len)
     default:
       return name
   }
