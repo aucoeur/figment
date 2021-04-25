@@ -10,9 +10,9 @@ figs aren't dates but time isn't real
   - [x] hour
   - [x] mins
   - [x] secs
-- [ ] Challenge 3: Format method that takes a "mask" string
-  - [ ] default formatted date with no parameters
-  - [ ] List of formatting characters:
+- [x] Challenge 3: Format method that takes a "mask" string
+  - [x] default formatted date with no parameters
+  - [x] List of formatting characters:
     - [x] 'Y' -> 2019 (Year full)
     - [x] 'y' -> 19 (Year short)
     - [x] 'M' -> July (Month full)
@@ -27,7 +27,8 @@ figs aren't dates but time isn't real
     - [x] 's' -> 4 (Seconds)
     - [x] Stretch: Add Day of Week
     - [x] Stretch: Add short Day of Week
-- [ ] Challenge 4: `when()` method
+    - [ ] TODO: Add 12/24 hour
+- [x] Challenge 4: `when()` method
   - [ ] Stretch: `when()` edge cases
   - [ ] Stretch: make work for hours, min, seconds
   - [ ] Stretch: include date & time

@@ -32,15 +32,15 @@ export function formatYear(y, type) {
   }
 }
 
-export function formatDay(d) {
-  let day =  d.toString()
-  return day.length === 1 ? day = `0${day}` : day
-}
+// export function formatDay(d) {
+//   let day =  d.toString()
+//   return day.length === 1 ? day = `0${day}` : day
+// }
 
-export function formatMonth(m) {
-  let month =  m.toString()
-  return month.length === 1 ? month = `0${month}` : month
-}
+// export function formatMonth(m) {
+//   let month =  m.toString()
+//   return month.length === 1 ? month = `0${month}` : month
+// }
 
 export function formatPadded(v, len) {
   let val = v.toString()
