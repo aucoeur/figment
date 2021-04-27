@@ -1,4 +1,6 @@
 # Figment - a simple datetime lib
+[![Build Status](https://travis-ci.com/aucoeur/figment.svg?branch=main)](https://travis-ci.com/aucoeur/figment) [![Coverage Status](https://coveralls.io/repos/github/aucoeur/figment/badge.svg?branch=main)](https://coveralls.io/github/aucoeur/figment?branch=main)
+
 figs aren't dates but time isn't real
 
 - [x] Challenge 0: Setup Project
@@ -32,7 +34,7 @@ figs aren't dates but time isn't real
   - [ ] Stretch: `when()` edge cases
   - [ ] Stretch: make work for hours, min, seconds
   - [ ] Stretch: include date & time
-- [ ] Challenge 5: Document date-lib with JSDoc
+- [x] Challenge 5: Document date-lib with JSDoc
 - [ ] Challenge 6: Write Unit Tests
 - [ ] Challenge 7: Publish to npm with these badges:
   - [ ] npm version
