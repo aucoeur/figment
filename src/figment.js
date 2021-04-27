@@ -3,8 +3,8 @@ import {
   days,
   formatYear,
   formatPadded,
-  formatDateName
-} from './formatHelpers.js'
+  formatDateName,
+} from './formatHelpers';
 
 export default class Fig {
   constructor(...args) {
@@ -18,31 +18,31 @@ export default class Fig {
    * @memberof Fig
    */
   get year() {
-    return this._date.getFullYear()
+    return this._date.getFullYear();
   }
 
   get month() {
-    return months[this._date.getMonth()]
+    return months[this._date.getMonth()];
   }
 
   get day() {
-    return this._date.getDate()
+    return this._date.getDate();
   }
 
   get dayOfWeek() {
-    return days[this._date.getDay()]
+    return days[this._date.getDay()];
   }
 
   get hour() {
-    return this._date.getHours()
+    return this._date.getHours();
   }
 
   get minutes() {
-    return this._date.getMinutes()
+    return this._date.getMinutes();
   }
 
   get seconds() {
-    return this._date.getSeconds()
+    return this._date.getSeconds();
   }
 
   /**
@@ -61,83 +61,96 @@ export default class Fig {
    * ddd – three-letter abbreviation for day of the week, e.g. Tue
    * dddd – day of the week spelled out in full, e.g. Tuesday
    *
+   * @memberof Fig
    * @param {string} pattern
    * @return {string}
-   * @memberof Fig
    */
 
   format(pattern) {
     // return default string
     if (!pattern) {
-      return this._date.toDateString()
+      return this._date.toDateString();
     }
 
     // Split by anything that is not a digit
-    const sequence = pattern.split(/\b[^ymdwhisap]+\b/gi)
+    const sequence = pattern.split(/\b[^ymdwhisap]+\b/gi);
 
     // matches everything in sequence, returns array of separators
-    const separators = pattern.split(/[ymdwhisap]+/gi)
+    const separators = pattern.split(/[ymdwhisap]+/gi);
     // console.log({sequence, separators})
 
-    let formatted = []
+    const formatted = [];
 
     sequence.map((s, i) => {
       // peek at first char to determine Y, M, D or H, I(min), S
-      let dateSlice = s.toLowerCase().charAt(0)
-      let len = s.length
-      let next
+      const dateSlice = s.toLowerCase().charAt(0);
+      const len = s.length;
+      let next;
 
       switch (dateSlice) {
         case 'y':
-          next = formatYear(this.year, len)
-          formatted.push(next, separators[i + 1])
+          next = formatYear(this.year, len);
+          formatted.push(next, separators[i + 1]);
           break;
         case 'd':
-          next = len <= 2 ? formatPadded(this.day) : formatDateName(this.dayOfWeek, len)
-          formatted.push(next, separators[i + 1])
+          next = len <= 2 ? formatPadded(this.day) : formatDateName(this.dayOfWeek, len);
+          formatted.push(next, separators[i + 1]);
           break;
         case 'm':
           // console.log(this.month)
-          next = len <= 2 ? formatPadded(this._date.getMonth() + 1) : formatDateName(this.month, len)
-          formatted.push(next, separators[i + 1])
+          next = len <= 2
+            ? formatPadded(this._date.getMonth() + 1)
+            : formatDateName(this.month, len);
+          formatted.push(next, separators[i + 1]);
           break;
         case 'h':
-          next = formatPadded(this.hour, len)
-          formatted.push(next, separators[i + 1])
+          next = formatPadded(this.hour, len);
+          formatted.push(next, separators[i + 1]);
           break;
         case 'i':
-          next = formatPadded(this.minutes, len)
-          formatted.push(next, separators[i + 1])
+          next = formatPadded(this.minutes, len);
+          formatted.push(next, separators[i + 1]);
           break;
         case 's':
-          next = formatPadded(this.seconds, len)
-          formatted.push(next, separators[i + 1])
+          next = formatPadded(this.seconds, len);
+          formatted.push(next, separators[i + 1]);
           break;
         default:
-          console.log('unrecognized')
+          // console.log('unrecognized');
           break;
       }
-    })
-    return formatted.join('')
+      return next;
+    });
+
+    return formatted.join('');
   }
 
+  /**
+   * when checks given date with today's date and returns human readable
+   * string of how many days have passed/will pass from this._date
+   *
+   * @memberof Fig
+   * @param {Date} date
+   * @return {string}
+   */
   when(date) {
-    const now = new Date()
-    const nowUTC = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate())
+    // const nowUTC = Date.UTC(date1.getUTCFullYear(), date1.getUTCMonth(), date1.getUTCDate());
 
-    const diff = (date.valueOf() - nowUTC.valueOf() ) /(24 * 60 * 60 * 1000)
-    return diff > 0 ? `${diff.toFixed(0)} days from now` : `${Math.abs(diff).toFixed(0)} days ago`
+    // const diff = (date.valueOf() - nowUTC.valueOf()) / (24 * 60 * 60 * 1000);
+    const diff = (date.valueOf() - this._date.valueOf()) / (24 * 60 * 60 * 1000);
+
+    return diff > 0 ? `${diff.toFixed(0)} days from ${this.format('MM/DD/YYYY')}` : `${Math.abs(diff).toFixed(0)} days since ${this.format('MM/DD/YYYY')}`;
   }
 }
 
-const fig = new Fig('1988-07-03T13:32:56.123Z')
-console.log(fig)
-console.log(fig.month)
-console.log(fig.hour)
-console.log(fig.format())
-console.log(fig.format('YYYY MMMM DD HH:II'))
-console.log(fig.format('DDDD MMMM DD, YYYY HH:II'))
+// const fig = new Fig('1988-07-03T13:32:56.123Z');
+// console.log(fig);
+// console.log(fig.month);
+// console.log(fig.hour);
+// console.log(fig.format());
+// console.log(fig.format('YYYY MMMM DD HH:II'));
+// console.log(fig.format('DDDD MMMM DD, YYYY HH:II'));
 
-const another = new Date(2021, 3, 23)
-console.log(another)
-console.log(fig.when(another))
+// const another = new Date(1970, 3, 23);
+// console.log(another);
+// console.log(fig.when(another));

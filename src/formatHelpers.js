@@ -11,24 +11,26 @@
 // ddd – three-letter abbreviation for day of the week, e.g. Tue
 // dddd – day of the week spelled out in full, e.g. Tuesday
 
-export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-const month_shor = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-export const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-const dys = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+// const monthShort = [
+//   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+//   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+export const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+// const dys = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 //  YYYY-MM-D
 // ['YYYY', 'MM', 'D']
 
 export function formatYear(y, type) {
-  let year = y.toString()
+  const year = y.toString();
   switch (type) {
     case 2:
-      return year.slice(-2)
+      return year.slice(-2);
     case 4:
-      return year
+      return year;
     default:
-      console.log('Unrecognized format, defaulting to full year value')
-      return year
+      // console.log('Unrecognized format, defaulting to full year value');
+      return year;
   }
 }
 
@@ -43,17 +45,17 @@ export function formatYear(y, type) {
 // }
 
 export function formatPadded(v, len) {
-  let val = v.toString()
+  const val = v.toString();
 
-  return len === 2 && v < 10 ? `0${val}` : `${val}`
+  return len === 2 && v < 10 ? `0${val}` : `${val}`;
 }
 
 export function formatDateName(name, len) {
   switch (len) {
     case 2:
     case 3:
-      return name.toString().substr(0, len)
+      return name.toString().substr(0, len);
     default:
-      return name
+      return name;
   }
 }
