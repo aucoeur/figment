@@ -1,37 +1,36 @@
-import {jest} from '@jest/globals';
 import Fig from './figment';
 
-const fig = new Fig('1988-07-10T21:32:56.123Z')
+const fig = new Fig('1988-07-10T21:32:56.123Z');
 
-describe(`figs aren't dates but time isn't real`, () => {
+describe('figs aren\'t dates but time isn\'t real', () => {
   test('Sanity Check', () => {
-    expect(fig._date instanceof Date).toBeTruthy()
-  })
-})
+    expect(fig._date instanceof Date).toBeTruthy();
+  });
+});
 
-describe(`Getters`, () => {
+describe('Getters', () => {
   test('year', () => {
-    expect(fig.year).toBe(1988)
-  })
+    expect(fig.year).toBe(1988);
+  });
   test('month', () => {
-    expect(fig.month).toBe('July')
-  })
+    expect(fig.month).toBe('July');
+  });
   test('day', () => {
-    expect(fig.day).toBe(10)
-  })
+    expect(fig.day).toBe(10);
+  });
   test('dayOfWeek', () => {
-    expect(fig.dayOfWeek).toBe('Sunday')
-  })
+    expect(fig.dayOfWeek).toBe('Sunday');
+  });
   test('hour', () => {
-    expect(fig.hour).toBe(14)
-  })
+    expect(fig.hour).toBe(21);
+  });
   test('minutes', () => {
-    expect(fig.minutes).toBe(32)
-  })
+    expect(fig.minutes).toBe(32);
+  });
   test('seconds', () => {
-    expect(fig.seconds).toBe(56)
-  })
-})
+    expect(fig.seconds).toBe(56);
+  });
+});
 
 // test('clip', () => {
 //   // expect(fig.getYear().clip(2)).toEqual(88)

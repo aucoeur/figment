@@ -13,8 +13,8 @@
 
 export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 // const monthShort = [
-//   'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-//   'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+// 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
+// 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 export const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 // const dys = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
