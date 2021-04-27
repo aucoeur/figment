@@ -22,7 +22,8 @@ describe('Getters', () => {
     expect(fig.dayOfWeek).toBe('Sunday');
   });
   test('hour', () => {
-    expect(fig.hour).toBe(21);
+    // 14 for local timezone Americas/Los Angeles
+    expect(fig.hour).toBe(14);
   });
   test('minutes', () => {
     expect(fig.minutes).toBe(32);
